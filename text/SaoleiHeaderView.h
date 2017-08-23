@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  SaoleiHeaderView.h
 //  text
 //
-//  Created by hanlu on 16/7/30.
+//  Created by hanlu on 16/8/2.
 //  Copyright © 2016年 吴迪. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface SaoleiHeaderView : UIView
 
 @end
-
