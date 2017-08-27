@@ -1,7 +1,5 @@
 //
 //  PopViewController.m
-//  UIPresentationVCtest
-//
 //  Created by Aotu on 16/4/11.
 //  Copyright © 2016年 Aotu. All rights reserved.
 //
@@ -12,7 +10,6 @@
 {
     UITableView *_tableVIew;
     NSArray *_dataArray;
-    NSArray *_arr1;
     NSArray *_arr2;
     
     
@@ -28,8 +25,6 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _arr1 = @[@"简单",@"中级"];
-    
     _tableVIew = [[UITableView alloc] initWithFrame:self.view.bounds];
     _tableVIew.delegate = self;
     _tableVIew.dataSource = self;
@@ -41,7 +36,7 @@
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _arr1.count;
+    return self.difficultyArray.count;
     
 }
 
@@ -53,7 +48,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
     }
-    cell.textLabel.text = _arr1[indexPath.row];
+    cell.textLabel.text = self.difficultyArray[indexPath.row];
     
     return cell;
 }
@@ -75,6 +70,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.delegate popViewController:self didselectedWith:indexPath.row];
 }
 @end

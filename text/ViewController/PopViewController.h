@@ -16,6 +16,7 @@
 
 @interface PopViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *difficultyArray;
 @property (nonatomic,weak) id <PopViewControllerDelegate> delegate;
 
 @end

@@ -10,4 +10,8 @@
 
 @interface PaihangViewController : UIViewController
 
+@property (nonatomic,assign) NSInteger difficulty;
+
+@property (nonatomic,assign) NSInteger randomNum;
+
 @end

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class UserModel;
 @interface PaihangTableViewCell : UITableViewCell
+
+@property (nonatomic,assign) NSInteger ranking;
+
+@property (nonatomic,strong) UserModel *model;
 
 @end
