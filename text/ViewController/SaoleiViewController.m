@@ -78,7 +78,7 @@
     
     _firstClick = YES;
     
-    self.difficultyArray = @[@"简单",@"中级",@"困难", @"梦魇"];
+    self.difficultyArray = @[@"简单(10雷)",@"中级(40雷)",@"困难(70雷)", @"梦魇(100雷)"];
     
     [self setupUI];
     
@@ -95,19 +95,19 @@
     
     SaoleiView *view = [[SaoleiView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetWidth(self.view.frame)) NumberOfChessInLine:0 NumberOfChessInList:0 ViewController:self];
     
-    view.center = CGPointMake(self.view.center.x, self.view.center.y  + 50 * [UIScreen mainScreen].bounds.size.height / 736);
+    view.center = CGPointMake(self.view.center.x, self.view.center.y  + 0 * [UIScreen mainScreen].bounds.size.height / 736 );
     
     self.saoleiView = view;
     
     [self.view addSubview:view];
     
-    _headerView = [[SaoleiHeaderView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(view.frame) - 60, self.view.frame.size.width, 60)];
+    _headerView = [[SaoleiHeaderView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(view.frame) - 60*[UIScreen mainScreen].bounds.size.height / 736, self.view.frame.size.width, 60*[UIScreen mainScreen].bounds.size.height / 736)];
     
     [_headerView.restartButton addTarget:self action:@selector(gameRestarted) forControlEvents:(UIControlEventTouchUpInside)];
     
     [self.view addSubview:_headerView];
     
-    _footerView = [[SaoleiFooterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame), self.view.frame.size.width, 60)];
+    _footerView = [[SaoleiFooterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame)+30, self.view.frame.size.width, 60*[UIScreen mainScreen].bounds.size.height / 736)];
     
     [_footerView.normalButton addTarget:self action:@selector(changeClickKindWithButton:) forControlEvents:(UIControlEventTouchUpInside)];
     
@@ -117,6 +117,7 @@
     
     [self.view addSubview:_footerView];
     
+    self.clickKind = 1;
     
 }
 
@@ -136,7 +137,7 @@
     _paihangVC.popoverPresentationController.backgroundColor = [UIColor whiteColor];
     
     //content尺寸
-    _paihangVC.preferredContentSize = CGSizeMake(400, 400);
+    _paihangVC.preferredContentSize = CGSizeMake(200, 250);
     
     //pop方向
     _paihangVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
@@ -162,8 +163,7 @@
     _popVC.popoverPresentationController.backgroundColor = [UIColor whiteColor];
     
     //content尺寸
-    _popVC.preferredContentSize = CGSizeMake(400, 400);
-    
+    _popVC.preferredContentSize = CGSizeMake(120, 216);
     //pop方向
     _popVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
     //delegate
@@ -396,6 +396,18 @@
     self.saoleiView.userInteractionEnabled = NO;
     
     [self timerEnd];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"不好意思，您输了。下次走运！" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *againAction = [UIAlertAction actionWithTitle:@"再玩一局 " style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self gameRestarted];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:againAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 /**
@@ -519,8 +531,8 @@
         case KindOfUserDifficultyHard:{
             self.saoleiView.numberOfChessInLine = 20;
             self.saoleiView.numberOfChessInList = 20;
-            self.numberOfLei = 50;
-            self.title = @"难";
+            self.numberOfLei = 70;
+            self.title = @"困难难度";
             
             break;
         }
@@ -529,7 +541,7 @@
             self.saoleiView.numberOfChessInLine = 30;
             self.saoleiView.numberOfChessInList = 30;
             self.numberOfLei = 100;
-            self.title = @"梦魇";
+            self.title = @"梦魇难度";
             
             break;
         }

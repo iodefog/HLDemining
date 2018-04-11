@@ -19,6 +19,7 @@
 
 @implementation PopViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -29,6 +30,10 @@
     _tableVIew.delegate = self;
     _tableVIew.dataSource = self;
     _tableVIew.scrollEnabled = YES;
+    _tableVIew.estimatedRowHeight = 54;
+    _tableVIew.estimatedSectionHeaderHeight = 0;
+    _tableVIew.estimatedSectionFooterHeight = 0;
+    _tableVIew.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     _tableVIew.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_tableVIew];
     
@@ -48,28 +53,28 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
     }
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.text = self.difficultyArray[indexPath.row];
-    
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
     return cell;
 }
 
 
-//重置本控制器的大小
--(CGSize)preferredContentSize{
-
-    if (self.popoverPresentationController != nil) {
-        CGSize tempSize ;
-        tempSize.height = self.view.frame.size.height;
-        tempSize.width  = 155;
-        CGSize size = [_tableVIew sizeThatFits:tempSize];  //返回一个完美适应tableView的大小的 size
-        return size;
-    }else{
-        return [super preferredContentSize];
-    }
-
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.delegate popViewController:self didselectedWith:indexPath.row];
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 54;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [UIView new];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [UIView new];
+}
+
+
 @end

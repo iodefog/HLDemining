@@ -11,9 +11,12 @@
 @interface SaoleiFooterView : UIView
 
 @property (nonatomic,strong) UIButton *flagButton;
+@property (nonatomic,strong) UILabel  *flagLabel;
 
 @property (nonatomic,strong) UIButton *normalButton;
+@property (nonatomic,strong) UILabel  *normalLabel;
 
 @property (nonatomic,strong) UIButton *questionButton;
+@property (nonatomic,strong) UILabel  *questionLabel;
 
 @end

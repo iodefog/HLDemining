@@ -19,17 +19,19 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:179 / 255.0f green:177 / 255.0f blue:179 / 255.0f alpha:1];
         
-        _numberOfLeiView = [[SaoleiNumberOrTimeImageView alloc] initWithFrame:CGRectMake(WD_width / 4 - 50, WD_height / 2 - 20, 60 , 40)];
+        CGFloat mm =  [UIScreen mainScreen].bounds.size.height / 736;
+        
+        _numberOfLeiView = [[SaoleiNumberOrTimeImageView alloc] initWithFrame:CGRectMake(WD_width / 4 - 50*mm, WD_height / 2 - 20*mm, 60*mm , 40*mm)];
         
         [self addSubview:_numberOfLeiView];
         
-        _restartButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.bounds) - 25, CGRectGetMidY(self.bounds) - 25, 50, 50)];
+        _restartButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.bounds) - 25*mm, CGRectGetMidY(self.bounds) - 25*mm, 50*mm, 50*mm)];
         
         self.restartKind = RestartKindNormal;
         
         [self addSubview:_restartButton];
         
-        _timeOfLeiView = [[SaoleiNumberOrTimeImageView alloc] initWithFrame:CGRectMake(WD_width / 4 * 3 - 10, WD_height / 2 - 20, 60 , 40)];
+        _timeOfLeiView = [[SaoleiNumberOrTimeImageView alloc] initWithFrame:CGRectMake(WD_width / 4 * 3 - 10*mm, WD_height / 2 - 20*mm, 60*mm , 40*mm)];
         
         [self addSubview:_timeOfLeiView];
     }
