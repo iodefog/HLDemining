@@ -163,7 +163,11 @@
     _popVC.popoverPresentationController.backgroundColor = [UIColor whiteColor];
     
     //content尺寸
-    _popVC.preferredContentSize = CGSizeMake(120, 216);
+    if ([[[self class] getPreferredLanguage] isEqualToString:@"zh-Hans"]) {
+        _popVC.preferredContentSize = CGSizeMake(120, 216);
+    }else {
+        _popVC.preferredContentSize = CGSizeMake(200, 216);
+    }
     //pop方向
     _popVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
     //delegate
@@ -204,6 +208,8 @@
     self.clickKind = SaoleiUserClickKindNormal;
     
     self.headerView.restartKind = RestartKindNormal;
+    
+    [self changeClickKindWithButton:_footerView.normalButton];
     
     [self timerEnd];
     
@@ -547,6 +553,15 @@
         }
     }
     [self.saoleiView resetView];
+}
+
++ (NSString*)getPreferredLanguage
+{
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+    NSString* preferredLang = [languages objectAtIndex:0];
+    NSLog(@"Preferred Language:%@", preferredLang);
+    return preferredLang;
 }
 
 

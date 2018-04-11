@@ -108,6 +108,7 @@
     if (!_emptyLabel) {
         _emptyLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
         _emptyLabel.textColor = [UIColor grayColor];
+        _emptyLabel.textAlignment = NSTextAlignmentCenter;
         _emptyLabel.text = NSLocalizedString(@"暂无数据", nil);
     }
     
