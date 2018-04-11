@@ -1,0 +1,27 @@
+/* 
+  InfoPlist.string.strings
+  text
+
+  Created by LHL on 2018/4/11.
+  Copyright © 2018 吴迪. All rights reserved.
+*/
+"简单(10雷)"="Easy(10mine)";
+"中级(40雷)"="Normal(40mine)";
+"困难(70雷)"="Hard(70mine)";
+"梦魇(100雷)"="Very Hard(100mine)";
+"选择难度"="Select Difficulty";
+"排行榜"="Ranking List";
+"恭喜大侠"="Congratulations";
+"SuccessTip"="You have won the %@ mode. The time taken to complete the game is %ld seconds, and you have entered the record list.";
+"请输入大侠的昵称"="Please enter heroes' nickname";
+"确定"="Enter";
+"默认"="Default";
+"SuccessTip1"="You have won the %@ mode and the time spent completing the match is %ld seconds";
+"FailTip"="Sorry, you lost. Good luck next time!";
+"取消"="Cancel";
+"再玩一局"="Restart";
+"简单难度"="Easy";
+"中等难度"="Normal";
+"困难难度"="Hard";
+"梦魇难度"="Very Hard";
+"暂无数据"="No Data";

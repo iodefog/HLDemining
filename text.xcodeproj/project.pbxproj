@@ -11,6 +11,8 @@
 		4F22D0001F4DBE87000FF4A9 /* tile_1_d_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F22CFFF1F4DBE87000FF4A9 /* tile_1_d_h@2x.png */; };
 		4F22D0031F4DC1AE000FF4A9 /* tile_1_hint_q_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F22D0011F4DC1AE000FF4A9 /* tile_1_hint_q_h@2x.png */; };
 		4F22D0041F4DC1AE000FF4A9 /* tile_1_mask_down_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F22D0021F4DC1AE000FF4A9 /* tile_1_mask_down_h@2x.png */; };
+		C7A7911E207DF20D00EBE1B1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7A79120207DF20D00EBE1B1 /* Localizable.strings */; };
+		C7A79124207DF6A200EBE1B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7A79126207DF6A200EBE1B1 /* InfoPlist.strings */; };
 		F712435F1D4C46DB0016BC8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F712435E1D4C46DB0016BC8E /* main.m */; };
 		F71243621D4C46DB0016BC8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F71243611D4C46DB0016BC8E /* AppDelegate.m */; };
 		F712436A1D4C46DC0016BC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F71243691D4C46DC0016BC8E /* Assets.xcassets */; };
@@ -252,6 +254,13 @@
 		4F22CFFF1F4DBE87000FF4A9 /* tile_1_d_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile_1_d_h@2x.png"; sourceTree = "<group>"; };
 		4F22D0011F4DC1AE000FF4A9 /* tile_1_hint_q_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile_1_hint_q_h@2x.png"; sourceTree = "<group>"; };
 		4F22D0021F4DC1AE000FF4A9 /* tile_1_mask_down_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile_1_mask_down_h@2x.png"; sourceTree = "<group>"; };
+		C7A79113207DEB6800EBE1B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C7A7911F207DF20D00EBE1B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C7A79121207DF21500EBE1B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C7A79125207DF6A200EBE1B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C7A79127207DF6AA00EBE1B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C7A79128207DF80600EBE1B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C7A79129207DF81300EBE1B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CC1056DC36B74D763CC7EB42 /* Pods-text.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-text.release.xcconfig"; path = "Pods/Target Support Files/Pods-text/Pods-text.release.xcconfig"; sourceTree = "<group>"; };
 		CE454B431E46C90B2AACF8EB /* libPods-text.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-text.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F712435A1D4C46DB0016BC8E /* text.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = text.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -579,6 +588,8 @@
 			isa = PBXGroup;
 			children = (
 				F712435E1D4C46DB0016BC8E /* main.m */,
+				C7A79120207DF20D00EBE1B1 /* Localizable.strings */,
+				C7A79126207DF6A200EBE1B1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -951,6 +962,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = F71243511D4C46DB0016BC8E;
 			productRefGroup = F712435B1D4C46DB0016BC8E /* Products */;
@@ -1008,6 +1020,7 @@
 				F7E4324C1D4F5310003CD0C3 /* tile_1_b~hd.png in Resources */,
 				F7E4328A1D4F5310003CD0C3 /* tile_2_bg~hd.png in Resources */,
 				F7E432331D4F5310003CD0C3 /* tile_1_6~hd.png in Resources */,
+				C7A79124207DF6A200EBE1B1 /* InfoPlist.strings in Resources */,
 				F7E4321E1D4F5310003CD0C3 /* tile_0_preview@2x.png in Resources */,
 				F7E432691D4F5310003CD0C3 /* tile_2_3~hd.png in Resources */,
 				F7E431ED1D4F5310003CD0C3 /* tile_0_4@2x.png in Resources */,
@@ -1140,6 +1153,7 @@
 				F7E432381D4F5310003CD0C3 /* tile_1_8@2x.png in Resources */,
 				F7E432181D4F5310003CD0C3 /* tile_0_mask@2x.png in Resources */,
 				F7E432741D4F5310003CD0C3 /* tile_2_7@2x.png in Resources */,
+				C7A7911E207DF20D00EBE1B1 /* Localizable.strings in Resources */,
 				F7E432911D4F5310003CD0C3 /* tile_2_hint_d~hd.png in Resources */,
 				F7E431F21D4F5310003CD0C3 /* tile_0_6.png in Resources */,
 				F7E4322B1D4F5310003CD0C3 /* tile_1_4.png in Resources */,
@@ -1297,10 +1311,31 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C7A79120207DF20D00EBE1B1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7A7911F207DF20D00EBE1B1 /* zh-Hans */,
+				C7A79121207DF21500EBE1B1 /* Base */,
+				C7A79128207DF80600EBE1B1 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		C7A79126207DF6A200EBE1B1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7A79125207DF6A200EBE1B1 /* zh-Hans */,
+				C7A79127207DF6AA00EBE1B1 /* Base */,
+				C7A79129207DF81300EBE1B1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F712436B1D4C46DC0016BC8E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F712436C1D4C46DC0016BC8E /* Base */,
+				C7A79113207DEB6800EBE1B1 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1312,6 +1347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1366,6 +1402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1424,7 +1461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lhl.emule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1442,7 +1479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lhl.emule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -38,7 +38,7 @@
 
     [self addSubview:_normalButton];
     
-    _normalLabel = [self getTipLabelFrame:CGRectMake(WD_width / 4 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:@"无雷"];
+    _normalLabel = [self getTipLabelFrame:CGRectMake(WD_width / 4 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:NSLocalizedString(@"无雷", nil)];
     [self addSubview:_normalLabel];
 
     _flagButton = [[UIButton alloc] initWithFrame:CGRectMake(WD_width / 2 - width/2, WD_height / 2 - width/2, width, width)];
@@ -51,7 +51,7 @@
 
     [self addSubview:_flagButton];
     
-    _flagLabel = [self getTipLabelFrame:CGRectMake(WD_width / 2 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:@"有雷"];
+    _flagLabel = [self getTipLabelFrame:CGRectMake(WD_width / 2 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:NSLocalizedString(@"有雷", nil)];
     [self addSubview:_flagLabel];
 
     
@@ -62,7 +62,7 @@
     
     [self addSubview:_questionButton];
     
-    _questionLabel = [self getTipLabelFrame:CGRectMake(WD_width / 4 * 3 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:@"疑问"];
+    _questionLabel = [self getTipLabelFrame:CGRectMake(WD_width / 4 * 3 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:NSLocalizedString(@"疑问", nil)];
     [self addSubview:_questionLabel];
 }
 

@@ -78,7 +78,7 @@
     
     _firstClick = YES;
     
-    self.difficultyArray = @[@"简单(10雷)",@"中级(40雷)",@"困难(70雷)", @"梦魇(100雷)"];
+    self.difficultyArray = @[NSLocalizedString(@"简单(10雷)", nil),NSLocalizedString(@"中级(40雷)", nil),NSLocalizedString(@"困难(70雷)", nil), NSLocalizedString(@"梦魇(100雷)", nil)];
     
     [self setupUI];
     
@@ -89,9 +89,9 @@
 }
 
 - (void)setupUI {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择难度" style:(UIBarButtonItemStylePlain) target:self action:@selector(popView)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"选择难度", nil) style:(UIBarButtonItemStylePlain) target:self action:@selector(popView)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"排行榜" style:(UIBarButtonItemStylePlain) target:self action:@selector(popPaihang)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"排行榜", nil) style:(UIBarButtonItemStylePlain) target:self action:@selector(popPaihang)];
     
     SaoleiView *view = [[SaoleiView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetWidth(self.view.frame)) NumberOfChessInLine:0 NumberOfChessInList:0 ViewController:self];
     
@@ -344,29 +344,29 @@
     
     NSString *difficulty = self.difficultyArray[self.difficulty];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"恭喜大侠" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"恭喜大侠", nil) message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     
     NSArray *array = [[SaveHandle shareSaveHandle]findModelWithDifficulty:self.difficulty];
     
     if (array.count < 5 || (array.count >= 5 && ((UserModel *)array.lastObject).time > self.timeInterval)) {
-        message = [NSString stringWithFormat:@"你赢得了%@模式,完成比赛所用时间为%ld秒,进入了记录榜哦！！！",difficulty,self.timeInterval];
+        message = [NSString stringWithFormat:NSLocalizedString(@"SuccessTip", nil),difficulty,self.timeInterval];
         
         UserModel *model = array.lastObject;
     
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            textField.placeholder = @"请输入大侠的昵称";
+            textField.placeholder = NSLocalizedString(@"请输入大侠的昵称", nil);
             textField.text = self.userName;
         }];
         
         __weak SaoleiViewController *weakSelf = self;
         
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"确定", nil) style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
             NSString *userName = alert.textFields.firstObject.text;
             
             [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"userName"];
             
             if (userName.length == 0) {
-                userName = @"默认";
+                userName = NSLocalizedString(@"默认", nil);
             }
             if (array.count >= 5) {
                 [[SaveHandle shareSaveHandle] deleteWithID:model.id_vierfy];
@@ -378,9 +378,9 @@
         }]];
         
     }else {
-        message = [NSString stringWithFormat:@"你赢得了%@模式,完成比赛所用时间为%ld秒",difficulty,self.timeInterval];
+        message = [NSString stringWithFormat:NSLocalizedString(@"SuccessTip1", nil),difficulty,self.timeInterval];
         
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"确定", nil) style:(UIAlertActionStyleDefault) handler:nil]];
     }
     
     alert.message = message;
@@ -397,8 +397,8 @@
     
     [self timerEnd];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"不好意思，您输了。下次走运！" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:NSLocalizedString(@"FailTip", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     UIAlertAction *againAction = [UIAlertAction actionWithTitle:@"再玩一局 " style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -515,7 +515,7 @@
             self.saoleiView.numberOfChessInLine = 16;
             self.saoleiView.numberOfChessInList = 16;
             self.numberOfLei = 40;
-            self.title = @"中等难度";
+            self.title = NSLocalizedString(@"中等难度", nil);
             
             break;
         }
@@ -523,7 +523,7 @@
             self.saoleiView.numberOfChessInLine = 9;
             self.saoleiView.numberOfChessInList = 9;
             self.numberOfLei = 10;
-            self.title = @"简单难度";
+            self.title = NSLocalizedString(@"简单难度", nil);
             
             break;
         }
@@ -532,7 +532,7 @@
             self.saoleiView.numberOfChessInLine = 20;
             self.saoleiView.numberOfChessInList = 20;
             self.numberOfLei = 70;
-            self.title = @"困难难度";
+            self.title = NSLocalizedString(@"困难难度", nil);
             
             break;
         }
@@ -541,7 +541,7 @@
             self.saoleiView.numberOfChessInLine = 30;
             self.saoleiView.numberOfChessInList = 30;
             self.numberOfLei = 100;
-            self.title = @"梦魇难度";
+            self.title = NSLocalizedString(@"梦魇难度", nil);
             
             break;
         }

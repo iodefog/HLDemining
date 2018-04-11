@@ -22,15 +22,15 @@
 - (void)setModel:(UserModel *)model {
     _model = model;
     
-    _nameModel.text = [NSString stringWithFormat:@"用户名:%@",model.name];
+    _nameModel.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"用户名", nil),model.name];
     
-    _timeLabel.text = [NSString stringWithFormat:@"时间:%ld秒",model.time];
+    _timeLabel.text = [NSString stringWithFormat:@"%@:%ld秒", NSLocalizedString(@"耗时",nil),model.time];
 }
 
 - (void)setRanking:(NSInteger)ranking {
     _ranking = ranking;
     
-    _rankingLabel.text = [NSString stringWithFormat:@"%ld",ranking];
+    _rankingLabel.text = [NSString stringWithFormat:@"%ld .",ranking];
 }
 
 @end
