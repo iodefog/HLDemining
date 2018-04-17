@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "SaoleiViewController.h"
+#import <InMobiSDK/InMobiSDK.h>
+
 @interface AppDelegate ()
 
 @end
@@ -22,7 +24,9 @@
     _window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SaoleiViewController new]];
     
     [_window makeKeyAndVisible];
-    
+    [IMSdk initWithAccountID:@"f4c668d025fd49cf91f6a84864f867f7"];
+    [IMSdk setLogLevel:kIMSDKLogLevelDebug];
+
     return YES;
 }
 

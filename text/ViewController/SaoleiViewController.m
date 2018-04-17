@@ -14,6 +14,8 @@
 #import "SaveHandle.h"
 #import "PopViewController.h"
 #import "PaihangViewController.h"
+#import <InMobiSDK/InMobiSDK.h>
+#import "Masonry.h"
 @interface SaoleiViewController ()<UIPopoverPresentationControllerDelegate,PopViewControllerDelegate>
 /**
  *  用户选择的点击方式
@@ -66,6 +68,8 @@
 
 @property (nonatomic,strong) NSArray *difficultyArray;
 
+@property (nonatomic,strong) IMBanner *banner;
+@property (nonatomic, strong) IMInterstitial *interstitial;
 
 @end
 
@@ -86,7 +90,38 @@
     self.userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
     
     self.difficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"difficulty"] integerValue];
+    
+    [self addAdBannner];
+    
+    if (!self.interstitial) {
+        self.interstitial = [[IMInterstitial alloc] initWithPlacementId:1523427796248];
+        self.interstitial.delegate = self;
+        [self.interstitial load];
+    }
 }
+
+- (void)addAdBannner{
+    self.banner = [[IMBanner alloc] initWithFrame:CGRectMake(0, 300, 320, 50)
+                                      placementId:1513346833738 delegate:self] ;
+//    self.banner.keywords = @"sports, cars, bikes";//设置显示广告的类型
+//    self.banner.refreshInterval = 25;
+    [self.view addSubview:self.banner];
+    [self.banner mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+        make.height.mas_equalTo(50);
+    }];
+
+    [self.banner load];
+//    [self.banner shouldAutoRefresh:YES];//设置是否自动刷新
+    
+}
+
+- (void)addInterstitial{
+    [self.interstitial load];
+    [self.interstitial showFromViewController:self];
+}
+
 
 - (void)setupUI {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"选择难度", nil) style:(UIBarButtonItemStylePlain) target:self action:@selector(popView)];
@@ -197,6 +232,9 @@
 }
 
 - (void)gameRestarted {
+    
+    [self addInterstitial];
+
     self.numberOfLeiExist = self.numberOfLei;
     
     self.timeInterval = 0;
@@ -564,5 +602,86 @@
     return preferredLang;
 }
 
+/*Indicates that the banner has received an ad. */
+- (void)bannerDidFinishLoading:(IMBanner *)banner {
+    NSLog(@"bannerDidFinishLoading");
+}
+/* Indicates that the banner has failed to receive an ad */
+- (void)banner:(IMBanner *)banner didFailToLoadWithError:(IMRequestStatus *)error {
+    NSLog(@"banner failed to load ad");
+    NSLog(@"Error : %@", error.description);
+}
+/* Indicates that the banner is going to present a screen. */
+- (void)bannerWillPresentScreen:(IMBanner *)banner {
+    NSLog(@"bannerWillPresentScreen");
+}
+/* Indicates that the banner has presented a screen. */
+- (void)bannerDidPresentScreen:(IMBanner *)banner {
+    NSLog(@"bannerDidPresentScreen");
+}
+/* Indicates that the banner is going to dismiss the presented screen. */
+- (void)bannerWillDismissScreen:(IMBanner *)banner {
+    NSLog(@"bannerWillDismissScreen");
+}
+/* Indicates that the banner has dismissed a screen. */
+- (void)bannerDidDismissScreen:(IMBanner *)banner {
+    NSLog(@"bannerDidDismissScreen");
+}
+/* Indicates that the user will leave the app. */
+- (void)userWillLeaveApplicationFromBanner:(IMBanner *)banner {
+    NSLog(@"userWillLeaveApplicationFromBanner");
+}
+/*  Indicates that the banner was interacted with. */
+-(void)banner:(IMBanner *)banner didInteractWithParams:(NSDictionary *)params{
+    NSLog(@"bannerdidInteractWithParams");
+}
+/*Indicates that the user has completed the action to be incentivised with .*/
+-(void)banner:(IMBanner*)banner rewardActionCompletedWithRewards:(NSDictionary*)rewards{
+    NSLog(@"rewardActionCompletedWithRewards");
+}
+
+
+/*Indicates that the interstitial is ready to be shown */
+- (void)interstitialDidFinishLoading:(IMInterstitial *)interstitial {
+    NSLog(@"interstitialDidFinishLoading");
+}
+/* Indicates that the interstitial has failed to receive an ad. */
+- (void)interstitial:(IMInterstitial *)interstitial didFailToLoadWithError:(IMRequestStatus *)error {
+    NSLog(@"Interstitial failed to load ad");
+    NSLog(@"Error : %@",error.description);
+}
+/* Indicates that the interstitial has failed to present itself. */
+- (void)interstitial:(IMInterstitial *)interstitial didFailToPresentWithError:(IMRequestStatus *)error {
+    NSLog(@"Interstitial didFailToPresentWithError");
+    NSLog(@"Error : %@",error.description);
+}
+/* indicates that the interstitial is going to present itself. */
+- (void)interstitialWillPresent:(IMInterstitial *)interstitial {
+    NSLog(@"interstitialWillPresent");
+}
+/* Indicates that the interstitial has presented itself */
+- (void)interstitialDidPresent:(IMInterstitial *)interstitial {
+    NSLog(@"interstitialDidPresent");
+}
+/* Indicates that the interstitial is going to dismiss itself. */
+- (void)interstitialWillDismiss:(IMInterstitial *)interstitial {
+    NSLog(@"interstitialWillDismiss");
+}
+/* Indicates that the interstitial has dismissed itself. */
+- (void)interstitialDidDismiss:(IMInterstitial *)interstitial {
+    NSLog(@"interstitialDidDismiss");
+}
+/* Indicates that the user will leave the app. */
+- (void)userWillLeaveApplicationFromInterstitial:(IMInterstitial *)interstitial {
+    NSLog(@"userWillLeaveApplicationFromInterstitial");
+}
+/* interstitial:didInteractWithParams: Indicates that the interstitial was interacted with. */
+- (void)interstitial:(IMInterstitial *)interstitial didInteractWithParams:(NSDictionary *)params {
+    NSLog(@"InterstitialDidInteractWithParams");
+}
+/* Not used for direct integration. Notifies the delegate that the ad server has returned an ad but assets are not yet available. */
+- (void)interstitialDidReceiveAd:(IMInterstitial *)interstitial {
+    NSLog(@"interstitialDidReceiveAd");
+}
 
 @end

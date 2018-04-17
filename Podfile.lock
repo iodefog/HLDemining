@@ -2,16 +2,19 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - InMobiSDK (7.0.4)
   - Masonry (1.0.1)
 
 DEPENDENCIES:
   - FMDB (~> 2.6.2)
+  - InMobiSDK
   - Masonry (~> 1.0.1)
 
 SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  InMobiSDK: 71c77f9f07260fe6d7cabf789d071e50007c7546
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
 
-PODFILE CHECKSUM: 5564606b5e51e73674e1dd2a8153eef0bc8df3c1
+PODFILE CHECKSUM: 4483bf79dc994bd28c6c3276128820aec27c0f38
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.rc.1
