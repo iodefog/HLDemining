@@ -3,7 +3,7 @@
   text
 
   Created by LHL on 2018/4/11.
-  Copyright © 2018 吴迪. All rights reserved.
+  Copyright © 2018 LHL. All rights reserved.
 */
 "简单(10雷)"="Easy(10 mine)";
 "中级(40雷)"="Normal(40 mine)";
@@ -25,7 +25,7 @@
 "困难难度"="Hard";
 "梦魇难度"="Very Hard";
 "暂无数据"="No Data";
-"无雷"="Safe";
+"排雷"="Safe";
 "有雷"="Mine";
 "疑问"="Query";
 "用户名"="Nickname";

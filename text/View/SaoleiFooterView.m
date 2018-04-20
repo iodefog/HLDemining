@@ -3,7 +3,7 @@
 //  text
 //
 //  Created by hanlu on 16/8/2.
-//  Copyright © 2016年 吴迪. All rights reserved.
+//  Copyright © 2016年 LHL. All rights reserved.
 //
 
 #import "SaoleiFooterView.h"
@@ -34,16 +34,16 @@
     _normalButton = [[UIButton alloc] initWithFrame:CGRectMake(WD_width / 4 - width/2, WD_height / 2 - width/2, width, width)];
     _normalButton.tag = 0;
     [_normalButton setBackgroundImage:[UIImage imageNamed:@"tile_1_mask_down"] forState:(UIControlStateNormal)];
-    [_normalButton setBackgroundImage:[UIImage imageNamed:@"tile_1_d_h"] forState:(UIControlStateSelected)];
+    [_normalButton setBackgroundImage:[UIImage imageNamed:@"tile_1_mask_down_h"] forState:(UIControlStateSelected)];
 
     [self addSubview:_normalButton];
     
-    _normalLabel = [self getTipLabelFrame:CGRectMake(WD_width / 4 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:NSLocalizedString(@"无雷", nil)];
+    _normalLabel = [self getTipLabelFrame:CGRectMake(WD_width / 4 - width/2, CGRectGetMaxY(_normalButton.frame)+5, width, 20) text:NSLocalizedString(@"排雷", nil)];
     [self addSubview:_normalLabel];
 
     _flagButton = [[UIButton alloc] initWithFrame:CGRectMake(WD_width / 2 - width/2, WD_height / 2 - width/2, width, width)];
     
-    _flagButton.tag = 1;
+    _flagButton.tag = 0;
     
     [_flagButton setBackgroundImage:[UIImage imageNamed:@"tile_1_d"] forState:(UIControlStateNormal)];
     [_flagButton setBackgroundImage:[UIImage imageNamed:@"tile_1_d_h"] forState:(UIControlStateSelected)];
@@ -58,7 +58,7 @@
     _questionButton = [[UIButton alloc] initWithFrame:CGRectMake(WD_width / 4 * 3 - width/2, WD_height / 2 - width/2, width, width)];
     _questionButton.tag = 2;
     [_questionButton setBackgroundImage:[UIImage imageNamed:@"tile_1_hint_q"] forState:(UIControlStateNormal)];
-    [_questionButton setBackgroundImage:[UIImage imageNamed:@"tile_1_d_h"] forState:(UIControlStateSelected)];
+    [_questionButton setBackgroundImage:[UIImage imageNamed:@"tile_1_hint_q_h@2x"] forState:(UIControlStateSelected)];
     
     [self addSubview:_questionButton];
     

@@ -3,7 +3,7 @@
 //  text
 //
 //  Created by hanlu on 16/8/2.
-//  Copyright © 2016年 吴迪. All rights reserved.
+//  Copyright © 2016年 LHL. All rights reserved.
 //
 
 #import "Position.h"

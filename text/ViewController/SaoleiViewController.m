@@ -3,7 +3,7 @@
 //  text
 //
 //  Created by hanlu on 16/7/30.
-//  Copyright © 2016年 吴迪. All rights reserved.
+//  Copyright © 2016年 LHL. All rights reserved.
 //
 
 #import "SaoleiViewController.h"
@@ -16,7 +16,14 @@
 #import "PaihangViewController.h"
 #import <InMobiSDK/InMobiSDK.h>
 #import "Masonry.h"
-@interface SaoleiViewController ()<UIPopoverPresentationControllerDelegate,PopViewControllerDelegate>
+
+#define HLScreenWidth MIN(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))
+#define HLScreenHeight MAX(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))
+
+@interface SaoleiViewController ()<UIPopoverPresentationControllerDelegate,
+PopViewControllerDelegate,
+IMInterstitialDelegate,
+IMBannerDelegate>
 /**
  *  用户选择的点击方式
  */
@@ -86,7 +93,6 @@
     
     [self setupUI];
     
-    
     self.userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
     
     self.difficulty = [[[NSUserDefaults standardUserDefaults] objectForKey:@"difficulty"] integerValue];
@@ -126,23 +132,25 @@
 - (void)setupUI {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"选择难度", nil) style:(UIBarButtonItemStylePlain) target:self action:@selector(popView)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"排行榜", nil) style:(UIBarButtonItemStylePlain) target:self action:@selector(popPaihang)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"排行榜", nil) style:(UIBarButtonItemStylePlain) target:self action:@selector(popPaihang)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"排行榜"] style:UIBarButtonItemStylePlain target:self action:@selector(popPaihang)];
+
     
-    SaoleiView *view = [[SaoleiView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetWidth(self.view.frame)) NumberOfChessInLine:0 NumberOfChessInList:0 ViewController:self];
+    SaoleiView *view = [[SaoleiView alloc] initWithFrame:CGRectMake(0, 0, HLScreenWidth, HLScreenWidth) NumberOfChessInLine:0 NumberOfChessInList:0 ViewController:self];
     
-    view.center = CGPointMake(self.view.center.x, self.view.center.y  + 0 * [UIScreen mainScreen].bounds.size.height / 736 );
+    view.center = CGPointMake(HLScreenWidth/2, HLScreenHeight/2  + 0 * HLScreenHeight / 736 );
     
     self.saoleiView = view;
     
     [self.view addSubview:view];
     
-    _headerView = [[SaoleiHeaderView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(view.frame) - 60*[UIScreen mainScreen].bounds.size.height / 736, self.view.frame.size.width, 60*[UIScreen mainScreen].bounds.size.height / 736)];
+    _headerView = [[SaoleiHeaderView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(view.frame) - 60*HLScreenHeight / 736, HLScreenWidth, 60*HLScreenHeight / 736)];
     
     [_headerView.restartButton addTarget:self action:@selector(gameRestarted) forControlEvents:(UIControlEventTouchUpInside)];
     
     [self.view addSubview:_headerView];
     
-    _footerView = [[SaoleiFooterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame)+30, self.view.frame.size.width, 60*[UIScreen mainScreen].bounds.size.height / 736)];
+    _footerView = [[SaoleiFooterView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame)+30, HLScreenWidth, 60*HLScreenHeight / 736)];
     
     [_footerView.normalButton addTarget:self action:@selector(changeClickKindWithButton:) forControlEvents:(UIControlEventTouchUpInside)];
     
@@ -152,7 +160,7 @@
     
     [self.view addSubview:_footerView];
     
-    self.clickKind = 1;
+    self.clickKind = 0;
     
 }
 

@@ -3,7 +3,7 @@
 //  text
 //
 //  Created by hanlu on 16/7/30.
-//  Copyright © 2016年 吴迪. All rights reserved.
+//  Copyright © 2016年 LHL. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -16,6 +16,9 @@
 
 @implementation AppDelegate
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
