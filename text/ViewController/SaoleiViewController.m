@@ -14,6 +14,7 @@
 #import "SaveHandle.h"
 #import "PopViewController.h"
 #import "PaihangViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import <InMobiSDK/InMobiSDK.h>
 #import "Masonry.h"
 
@@ -82,8 +83,8 @@ IMBannerDelegate>
 @property (nonatomic,strong) NSArray *difficultyArray;
 
 @property (nonatomic,strong) IMBanner *banner;
-@property (nonatomic, strong) IMInterstitial *interstitial;
-
+@property (nonatomic,strong) IMInterstitial *interstitial;
+@property (nonatomic,strong) AVAudioPlayer *player;
 @end
 
 @implementation SaoleiViewController
@@ -414,6 +415,9 @@ IMBannerDelegate>
 - (void)winGame {
     self.isPalying = NO;
     
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"9714" ofType:@"mp3"];
+    [self playMusic:[NSURL fileURLWithPath:path] volume:1];
+    
     self.headerView.restartKind = RestartKindWin;
     
     self.saoleiView.userInteractionEnabled = NO;
@@ -471,6 +475,9 @@ IMBannerDelegate>
 - (void)loseGame {
     self.isPalying = NO;
 
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"1554" ofType:@"mp3"];
+    [self playMusic:[NSURL fileURLWithPath:path] volume:0.5];
+    
     self.headerView.restartKind = RestartKindLose;
     
     [self.saoleiView showAll];
@@ -483,7 +490,7 @@ IMBannerDelegate>
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
-    UIAlertAction *againAction = [UIAlertAction actionWithTitle:@"再玩一局 " style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *againAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"再玩一局", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self gameRestarted];
     }];
     [alertController addAction:cancelAction];
@@ -630,6 +637,30 @@ IMBannerDelegate>
     }
     [self.saoleiView resetView];
 }
+#pragma mark -
+
+- (void)playMusic:(NSURL *)url volume:(CGFloat)volume{
+    NSError *error = nil;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    self.player = player;
+    player.volume = volume;
+    [player prepareToPlay];
+    [player  play];
+    
+//    SystemSoundID soundID = 0;
+//
+//    CFURLRef urlRef = (__bridge CFURLRef)(url);
+//    AudioServicesCreateSystemSoundID(urlRef, &soundID);
+    
+    // 播放音效
+    // AudioServicesPlaySystemSound(soundID);
+    
+    //有震动效果
+//    AudioServicesPlayAlertSound(self.soundID);
+}
+
+
+#pragma mark -
 
 + (NSString*)getPreferredLanguage
 {
@@ -639,6 +670,8 @@ IMBannerDelegate>
     NSLog(@"Preferred Language:%@", preferredLang);
     return preferredLang;
 }
+
+#pragma mark - Banner
 
 /*Indicates that the banner has received an ad. */
 - (void)bannerDidFinishLoading:(IMBanner *)banner {
@@ -678,6 +711,7 @@ IMBannerDelegate>
     NSLog(@"rewardActionCompletedWithRewards");
 }
 
+#pragma mark - Interstitial
 
 /*Indicates that the interstitial is ready to be shown */
 - (void)interstitialDidFinishLoading:(IMInterstitial *)interstitial {

@@ -14,7 +14,7 @@
 "恭喜大侠"="Congratulations";
 "SuccessTip"="You have won the %@ mode. The time taken to complete the game is %ld seconds, and you have entered the record list.";
 "请输入大侠的昵称"="Please enter heroes' nickname";
-"确定"="Enter";
+"确定"="OK";
 "默认"="Default";
 "SuccessTip1"="You have won the %@ mode and the time spent completing the match is %ld seconds";
 "FailTip"="Sorry, you lost. Good luck next time!";
