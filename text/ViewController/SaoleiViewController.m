@@ -32,6 +32,12 @@ IMBannerDelegate>
  *  是否是第一次点击
  */
 @property (nonatomic,assign) BOOL firstClick;
+
+/**
+ *  是否是正在游戏
+ */
+@property (nonatomic,assign) BOOL isPalying;
+
 /**
  *  还剩余的雷数(用来控制左侧计数面板的显示数字)
  */
@@ -124,8 +130,8 @@ IMBannerDelegate>
 }
 
 - (void)addInterstitial{
-    [self.interstitial load];
     [self.interstitial showFromViewController:self];
+    [self.interstitial load];
 }
 
 
@@ -146,7 +152,7 @@ IMBannerDelegate>
     
     _headerView = [[SaoleiHeaderView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(view.frame) - 60*HLScreenHeight / 736, HLScreenWidth, 60*HLScreenHeight / 736)];
     
-    [_headerView.restartButton addTarget:self action:@selector(gameRestarted) forControlEvents:(UIControlEventTouchUpInside)];
+    [_headerView.restartButton addTarget:self action:@selector(tryGameRestarted) forControlEvents:(UIControlEventTouchUpInside)];
     
     [self.view addSubview:_headerView];
     
@@ -239,7 +245,25 @@ IMBannerDelegate>
     sender.selected = !sender.selected;
 }
 
+- (void)tryGameRestarted{
+    if (self.isPalying) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"尝试重试", nil) message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil) style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *enter = [UIAlertAction actionWithTitle:NSLocalizedString(@"确定", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self gameRestarted];
+        }];
+        [alertController addAction:cancel];
+        [alertController addAction:enter];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else {
+        [self gameRestarted];
+    }
+}
+
 - (void)gameRestarted {
+    
+    self.isPalying = NO;
     
     [self addInterstitial];
 
@@ -302,6 +326,8 @@ IMBannerDelegate>
         
         [self timerStart];
         
+        self.isPalying = YES;
+
         _firstClick = !_firstClick;
     }
     
@@ -327,7 +353,7 @@ IMBannerDelegate>
                  *  周围的雷数不为0
                  */
                 if (sender.numberOfLei) {
-                    NSString *string = [NSString stringWithFormat:@"tile_0_%ld~hd.png",sender.numberOfLei];
+                    NSString *string = [NSString stringWithFormat:@"tile_0_%ld~hd.png",(long)sender.numberOfLei];
                     
                     [sender setBackgroundImage:[UIImage imageNamed:string] forState:(UIControlStateDisabled)];
                     
@@ -386,6 +412,8 @@ IMBannerDelegate>
 }
 
 - (void)winGame {
+    self.isPalying = NO;
+    
     self.headerView.restartKind = RestartKindWin;
     
     self.saoleiView.userInteractionEnabled = NO;
@@ -441,6 +469,8 @@ IMBannerDelegate>
 }
 
 - (void)loseGame {
+    self.isPalying = NO;
+
     self.headerView.restartKind = RestartKindLose;
     
     [self.saoleiView showAll];

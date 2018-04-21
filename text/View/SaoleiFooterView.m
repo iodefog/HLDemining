@@ -35,6 +35,7 @@
     _normalButton.tag = 0;
     [_normalButton setBackgroundImage:[UIImage imageNamed:@"tile_1_mask_down"] forState:(UIControlStateNormal)];
     [_normalButton setBackgroundImage:[UIImage imageNamed:@"tile_1_mask_down_h"] forState:(UIControlStateSelected)];
+    _normalButton.selected = YES;
 
     [self addSubview:_normalButton];
     
@@ -43,11 +44,10 @@
 
     _flagButton = [[UIButton alloc] initWithFrame:CGRectMake(WD_width / 2 - width/2, WD_height / 2 - width/2, width, width)];
     
-    _flagButton.tag = 0;
+    _flagButton.tag = 1;
     
     [_flagButton setBackgroundImage:[UIImage imageNamed:@"tile_1_d"] forState:(UIControlStateNormal)];
     [_flagButton setBackgroundImage:[UIImage imageNamed:@"tile_1_d_h"] forState:(UIControlStateSelected)];
-    _flagButton.selected = YES;
 
     [self addSubview:_flagButton];
     
