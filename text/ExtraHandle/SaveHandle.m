@@ -77,7 +77,7 @@ static SaveHandle *shareSaveHandle = nil;
         
         KindOfUserDifficulty difficulty = [set intForColumn:@"difficulty"];
         
-        [array addObject:[UserModel modelWithName:name Time:time ID:id_vierfy Difficulty:difficulty RandomNum:randomNum]];
+        [array addObject:[UserModel modelWithName:name costTime:time ID:id_vierfy Difficulty:difficulty RandomNum:randomNum]];
     }
     
     return array;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger,KindOfUserDifficulty) {
+    KindOfUserDifficultySuperEasy, // 超级容易
     KindOfUserDifficultyEasy, // 容易
     KindOfUserDifficultyNormal, // 正常
     KindOfUserDifficultyHard, // 难
@@ -19,7 +20,9 @@ typedef NS_ENUM(NSInteger,KindOfUserDifficulty) {
 
 @property (nonatomic,strong) NSString *name;
 
-@property (nonatomic,assign) NSInteger time;
+@property (nonatomic,assign) NSInteger costTime;
+
+@property (nonatomic,assign) NSString *datetime;
 
 @property (nonatomic,assign) NSInteger id_vierfy;
 
@@ -27,6 +30,6 @@ typedef NS_ENUM(NSInteger,KindOfUserDifficulty) {
 
 @property (nonatomic,assign) KindOfUserDifficulty difficulty;
 
-+ (UserModel *)modelWithName:(NSString *)name Time:(NSInteger)time ID:(NSInteger)ID Difficulty:(KindOfUserDifficulty)difficulty RandomNum:(NSInteger)randomNum;
++ (UserModel *)modelWithName:(NSString *)name costTime:(NSInteger)costTime ID:(NSInteger)ID Difficulty:(KindOfUserDifficulty)difficulty RandomNum:(NSInteger)randomNum;
 
 @end

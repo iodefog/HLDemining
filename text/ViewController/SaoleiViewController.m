@@ -96,7 +96,12 @@ IMBannerDelegate>
     
     _firstClick = YES;
     
-    self.difficultyArray = @[NSLocalizedString(@"简单(10雷)", nil),NSLocalizedString(@"中级(40雷)", nil),NSLocalizedString(@"困难(70雷)", nil), NSLocalizedString(@"梦魇(100雷)", nil)];
+    self.difficultyArray = @[
+                             NSLocalizedString(@"儿童模式(5雷)", nil),
+                             NSLocalizedString(@"简单(10雷)", nil),
+                             NSLocalizedString(@"中级(40雷)", nil),
+                             NSLocalizedString(@"困难(70雷)", nil),
+                             NSLocalizedString(@"梦魇(100雷)", nil)];
     
     [self setupUI];
     
@@ -407,7 +412,7 @@ IMBannerDelegate>
         }
         
     }
-    if (realNumber == self.numberOfLei && self.numberOfLeiExist == 0) {
+    if (realNumber == self.numberOfLei || self.numberOfLeiExist == 0) {
         [self winGame];
     }
 }
@@ -432,7 +437,7 @@ IMBannerDelegate>
     
     NSArray *array = [[SaveHandle shareSaveHandle]findModelWithDifficulty:self.difficulty];
     
-    if (array.count < 5 || (array.count >= 5 && ((UserModel *)array.lastObject).time > self.timeInterval)) {
+    if (array.count < 5 || (array.count >= 5 && ((UserModel *)array.lastObject).costTime > self.timeInterval)) {
         message = [NSString stringWithFormat:NSLocalizedString(@"SuccessTip", nil),difficulty,self.timeInterval];
         
         UserModel *model = array.lastObject;
@@ -600,14 +605,15 @@ IMBannerDelegate>
     [[NSUserDefaults standardUserDefaults] setObject:@(difficulty) forKey:@"difficulty"];
     
     switch (difficulty) {
-        case KindOfUserDifficultyNormal:{
-            self.saoleiView.numberOfChessInLine = 16;
-            self.saoleiView.numberOfChessInList = 16;
-            self.numberOfLei = 40;
-            self.title = NSLocalizedString(@"中等难度", nil);
+        case KindOfUserDifficultySuperEasy:{
+            self.saoleiView.numberOfChessInLine = 6;
+            self.saoleiView.numberOfChessInList = 6;
+            self.numberOfLei = 5;
+            self.title = NSLocalizedString(@"儿童难度", nil);
             
             break;
         }
+            
         case KindOfUserDifficultyEasy:{
             self.saoleiView.numberOfChessInLine = 9;
             self.saoleiView.numberOfChessInList = 9;
@@ -617,6 +623,15 @@ IMBannerDelegate>
             break;
         }
             
+        case KindOfUserDifficultyNormal:{
+            self.saoleiView.numberOfChessInLine = 16;
+            self.saoleiView.numberOfChessInList = 16;
+            self.numberOfLei = 40;
+            self.title = NSLocalizedString(@"中等难度", nil);
+            
+            break;
+        }
+       
         case KindOfUserDifficultyHard:{
             self.saoleiView.numberOfChessInLine = 20;
             self.saoleiView.numberOfChessInList = 20;

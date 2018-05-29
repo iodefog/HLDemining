@@ -24,7 +24,7 @@
     
     _nameModel.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"用户名", nil),model.name];
     
-    _timeLabel.text = [NSString stringWithFormat:@"%@:%ld秒", NSLocalizedString(@"耗时",nil),model.time];
+    _timeLabel.text = [NSString stringWithFormat:@"%@:%ld秒", NSLocalizedString(@"耗时",nil),model.costTime];
 }
 
 - (void)setRanking:(NSInteger)ranking {

@@ -5,6 +5,7 @@
   Created by LHL on 2018/4/11.
   Copyright © 2018 LHL. All rights reserved.
 */
+"儿童模式(5雷)" = "Kid(5 mine)";
 "简单(10雷)"="Easy(10 mine)";
 "中级(40雷)"="Normal(40 mine)";
 "困难(70雷)"="Hard(70 mine)";
@@ -20,6 +21,7 @@
 "FailTip"="Sorry, you lost. Good luck next time!";
 "取消"="Cancel";
 "再玩一局"="Restart";
+"儿童难度"="Kid Mode";
 "简单难度"="Easy";
 "中等难度"="Normal";
 "困难难度"="Hard";

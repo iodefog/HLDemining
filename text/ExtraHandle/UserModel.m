@@ -10,12 +10,12 @@
 
 @implementation UserModel
 
-- (instancetype)initWithName:(NSString *)name Time:(NSInteger)time ID:(NSInteger)ID Difficulty:(KindOfUserDifficulty)difficulty RandomNum:(NSInteger)randomNum{
+- (instancetype)initWithName:(NSString *)name costTime:(NSInteger)costTime ID:(NSInteger)ID Difficulty:(KindOfUserDifficulty)difficulty RandomNum:(NSInteger)randomNum{
     self = [super init];
     if (self) {
         _name = name;
         
-        _time = time;
+        _costTime = costTime;
         
         _id_vierfy = ID;
         
@@ -26,12 +26,12 @@
     return self;
 }
 
-+ (UserModel *)modelWithName:(NSString *)name Time:(NSInteger)time ID:(NSInteger)ID Difficulty:(KindOfUserDifficulty)difficulty RandomNum:(NSInteger)randomNum{
-    return [[super alloc] initWithName:name Time:time ID:ID Difficulty:difficulty RandomNum:randomNum];
++ (UserModel *)modelWithName:(NSString *)name costTime:(NSInteger)costTime ID:(NSInteger)ID Difficulty:(KindOfUserDifficulty)difficulty RandomNum:(NSInteger)randomNum{
+    return [[super alloc] initWithName:name costTime:costTime ID:ID Difficulty:difficulty RandomNum:randomNum];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"name:%@,time:%ld,difficulty:%ld",self.name,self.time,self.difficulty];
+    return [NSString stringWithFormat:@"name:%@,time:%ld,difficulty:%ld",self.name,self.costTime,self.difficulty];
 }
 
 @end
