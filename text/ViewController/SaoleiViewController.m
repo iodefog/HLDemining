@@ -407,7 +407,7 @@
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
-    UIAlertAction *againAction = [UIAlertAction actionWithTitle:@"再玩一局 " style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *againAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"再玩一局", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self gameRestarted];
     }];
     [alertController addAction:cancelAction];
