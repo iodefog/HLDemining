@@ -16,8 +16,8 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "update to appstore"
-  lane :update_app_store do
+  desc "upload to appstore"
+  lane :upload_appstore do
   	  increment_build_number
 	gym(
 		scheme:"text",
@@ -25,6 +25,7 @@ platform :ios do
 		output_directory:"./fastlane/build",
 		archive_path:"./Archive",
 		clean:"ture",
+		export_options:"./fastlane/ExportOptions.plist"
 		# codesigning_identity:"emule_distribution",
 	)	
 	deliver
